@@ -1,0 +1,373 @@
+/* Base styles */
+body {
+    background-color: #141414; /* Fundal intunecat */
+    color: white; /* Text alb */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 60px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Navigation */
+.navbar {
+    background-color: #000;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    background: linear-gradient(90deg, #d32f2f, #1976d2);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+}
+
+    .logo:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ddd;
+}
+
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #fff;
+    }
+
+/* Profile */
+.profile-bubble,
+.profil {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #0e0e0e;
+    background-color: #fff;
+    position: relative;
+    right: 5px; /* Pozitionat mai aproape de marginea dreapta */
+    margin-left: auto;
+}
+
+    .profile-bubble img,
+    .profil img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* Welcome message styling */
+.welcome-message,
+.bine-ai-revenit,
+.user-greeting,
+.user-welcome {
+    margin-right: 15px; /* Spatiu intre mesaj si bula de profil */
+    text-align: right;
+    white-space: nowrap; /* Previne ruperea textului */
+    color: white;
+}
+
+/* Header user section layout */
+.header-user-section,
+.user-section,
+.profile-section,
+.navbar-nav.ml-auto,
+.navbar-collapse .d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* Spatiu consistent intre elemente */
+}
+
+/* Cards */
+.card {
+    background-color: #1e1e1e;
+    border-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    color: white;
+}
+
+.card-header {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.card-title {
+    color: #fff;
+    font-weight: 600;
+}
+
+.card-text {
+    color: #fff; /* Schimbat din #ddd in alb */
+}
+
+/* Buttons */
+.btn {
+    color: white !important;
+}
+
+.btn-play,
+button[class*="play"],
+.btn-add-to-list,
+.adauga-in-lista,
+button:not(.btn-edit):not(.btn-delete):not([class*="editare"]):not([class*="sterge"]),
+.inapoi-la-lista,
+[class*="inapoi"] {
+    background: linear-gradient(90deg, #d32f2f, #1976d2);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+    .btn-play:hover,
+    button[class*="play"]:hover,
+    .btn-add-to-list:hover,
+    .adauga-in-lista:hover,
+    button:not(.btn-edit):not(.btn-delete):not([class*="editare"]):not([class*="sterge"]):hover,
+    .inapoi-la-lista:hover,
+    [class*="inapoi"]:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    }
+
+/* Stilizare corectata pentru butonul "Inapoi la lista" */
+.inapoi-la-lista,
+button[class*="inapoi"],
+a.inapoi-la-lista,
+a[class*="inapoi"],
+a[href*="lista"],
+.btn-inapoi {
+    background: linear-gradient(90deg, #d32f2f, #1976d2) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 12px !important;
+    border-radius: 5px !important;
+    transition: all 0.3s ease !important;
+    display: inline-block; /* Asigura ca gradientul se aplica corect */
+}
+
+    .inapoi-la-lista:hover,
+    button[class*="inapoi"]:hover,
+    a.inapoi-la-lista:hover,
+    a[class*="inapoi"]:hover,
+    a[href*="lista"]:hover,
+    .btn-inapoi:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f) !important;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3) !important;
+    }
+
+.btn-outline-primary {
+    color: white;
+    border-color: #1976d2;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #1976d2;
+    }
+
+.btn-outline-danger {
+    color: white;
+    border-color: #d32f2f;
+}
+
+    .btn-outline-danger:hover {
+        background-color: #d32f2f;
+    }
+
+.btn-outline-info {
+    color: white;
+    border-color: #03a9f4;
+}
+
+    .btn-outline-info:hover {
+        background-color: #03a9f4;
+    }
+
+/* Form Controls */
+.form-control,
+.input,
+input,
+textarea,
+select {
+    color: white !important; /* Text alb */
+    background-color: #333 !important; /* Fundal inchis pentru inputuri */
+    border-color: #444 !important; /* Margini mai vizibile */
+}
+
+    .form-control::placeholder {
+        color: #999 !important; /* Placeholder gri deschis */
+    }
+
+    /* Focus state pentru inputuri */
+    .form-control:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+        color: white !important; /* Asigura-te ca textul ramane alb */
+        background-color: #444 !important; /* Fundal la focus */
+        border-color: #1976d2 !important; /* Border la focus */
+        box-shadow: 0 0 0 0.25rem rgba(25, 118, 210, 0.25) !important; /* Efect de focus */
+    }
+
+/* Tables - Fundal inchis si chenare clare */
+.table {
+    color: white;
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #444; /* Bordura exterioara */
+    background-color: #1a1a1a; /* Fundal inchis pentru intregul tabel */
+}
+
+    .table thead th {
+        background-color: #222; /* Fundal mai inchis pentru antet */
+        color: white;
+        border: 2px solid #555; /* Borduri groase */
+        padding: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .table tbody td,
+    .table tbody th {
+        background-color: #2a2a2a; /* Fundal inchis pentru celule */
+        border: 2px solid #555; /* Borduri clare pe fiecare celula */
+        padding: 10px;
+        text-align: center;
+        color: white;
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(25, 118, 210, 0.2); /* Efect de hover */
+    }
+
+    .table a {
+        color: #03a9f4;
+        text-decoration: none;
+    }
+
+        .table a:hover {
+            color: #00c3ff;
+            text-decoration: underline;
+        }
+
+/* Movie Cards */
+.movie-card {
+    width: 200px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #222;
+}
+
+    .movie-card:hover {
+        transform: scale(1.05);
+    }
+
+    .movie-card img {
+        width: 100%;
+        border-radius: 6px 6px 0 0;
+    }
+
+/* Footer */
+footer {
+    background-color: #000;
+    padding: 20px 0;
+    color: #999;
+    margin-top: 50px;
+    border-top: 1px solid #333;
+}
+
+/* Utility Classes */
+.bg-dark {
+    background-color: #141414 !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+/* Focus states */
+.btn:focus,
+.btn:active:focus,
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Film Details */
+.descriere,
+.an-lansare,
+.durata,
+.gen {
+    color: #fff !important; /* Asigura ca toate textele descriptive sunt albe */
+}
+
+/* Pentru selectorii specifici din pagina de detalii film */
+[class*="descriere"] p,
+[class*="descriere"] span,
+[class*="descriere"] div {
+    color: #fff !important;
+}
+
+/* Logo specific - asigura aplicarea corecta a gradientului */
+#netflicks-logo,
+.netflicks-logo,
+a[href="/"].navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    background: linear-gradient(90deg, #d32f2f, #1976d2);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Text sub titlul filmului - alb in loc de gri */
+.movie-subtitle,
+.film-info,
+.film-metadata,
+.film-details small,
+h1 + small,
+h1 + .small,
+h1 + div,
+.inception-2-subtitle,
+h1 ~ .text-muted,
+h1 ~ small {
+    color: #fff !important;
+}
+
+/* Selector specific pentru textul sub titlul Inception 2 */
+#inception2-subtitle,
+.movie-year-genre {
+    color: #fff !important;
+}
+
+/* Header layout - pentru pozitionarea profilului */
+.navbar-nav,
+.header-controls,
+.user-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

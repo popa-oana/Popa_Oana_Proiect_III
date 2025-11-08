@@ -1,0 +1,57 @@
+﻿@model Proiect_Netficks.Models.Film
+@{
+    ViewData["Title"] = "Detalii film";
+}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>@Model.Titlu</h1>
+            <p class="text-muted">@Model.An_Lansare | @Model.Durata minute | @Model.Gen.Nume_Gen</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <!-- Am eliminat butonul de editare de aici -->
+            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="~/images/movie-placeholder-1.jpg" class="card-img-top" alt="@Model.Titlu">
+                <div class="card-body text-center">
+                    <button class="btn btn-play w-100 mb-2">Play</button>
+                    <button class="btn-list w-100">Adaugă în lista mea</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Despre film</h3>
+                    <dl class="row">
+                        <dt class="col-sm-3">Titlu</dt>
+                        <dd class="col-sm-9">@Model.Titlu</dd>
+                        <dt class="col-sm-3">An lansare</dt>
+                        <dd class="col-sm-9">@Model.An_Lansare</dd>
+                        <dt class="col-sm-3">Durată</dt>
+                        <dd class="col-sm-9">@Model.Durata minute</dd>
+                        <dt class="col-sm-3">Gen</dt>
+                        <dd class="col-sm-9">@Model.Gen.Nume_Gen</dd>
+                        <dt class="col-sm-3">Descriere</dt>
+                        <dd class="col-sm-9">@Model.Descriere</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h3 class="card-title">Acțiuni administrative</h3>
+                    <div class="d-flex">
+                        <a asp-action="Edit" asp-route-id="@Model.Film_ID" class="btn btn-outline-primary me-2">Editare</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Film_ID" class="btn btn-outline-danger">Șterge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Spațiu suplimentar pentru subsol -->
+    <div class="mb-5 pb-5"></div>
+</div>

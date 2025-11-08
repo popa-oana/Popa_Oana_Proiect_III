@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Acces Interzis";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white text-center">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body p-4 text-center">
+                <div class="mb-4">
+                    <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 4rem;"></i>
+                </div>
+                <h3>Nu aveți permisiunea de a accesa această pagină.</h3>
+                <p class="lead">Vă rugăm să vă autentificați cu un cont care are permisiunile necesare.</p>
+                <div class="mt-4">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-danger">Înapoi la pagina principală</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

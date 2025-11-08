@@ -1,0 +1,138 @@
+@using Microsoft.AspNetCore.Identity
+@model Proiect_Netficks.ViewModels.ProfileViewModel
+@inject UserManager<Proiect_Netficks.Models.User> UserManager
+@{
+    ViewData["Title"] = "Profilul meu";
+    var user = await UserManager.GetUserAsync(User);
+    var roles = await UserManager.GetRolesAsync(user);
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-danger text-white">
+                <h2 class="mb-0">@ViewData["Title"]</h2>
+            </div>
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                        <div class="avatar-container mb-3 position-relative">
+                            @if (string.IsNullOrEmpty(Model.CurrentProfileImagePath))
+                            {
+                                <i class="bi bi-person-circle text-danger" style="font-size: 6rem;"></i>
+                            }
+                            else
+                            {
+                                <img src="@Model.CurrentProfileImagePath" alt="Imagine profil" class="rounded-circle profile-image" style="width: 120px; height: 120px; object-fit: cover;" />
+                            }
+                            <button type="button" class="btn btn-sm btn-danger position-absolute bottom-0 start-50 translate-middle-x" data-bs-toggle="modal" data-bs-target="#profileImageModal">
+                                <i class="bi bi-camera"></i> Schimbă
+                            </button>
+                        </div>
+                        <h4>@user.Nume</h4>
+                        <p class="badge bg-danger">@user.Tip_Abonament</p>
+                        @foreach (var role in roles)
+                        {
+                            <p class="badge bg-dark">@role</p>
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <div class="user-info">
+                            <div class="info-item mb-3">
+                                <h5 class="text-danger">Informații cont</h5>
+                                <hr />
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Email:</div>
+                                    <div class="col-md-8">@user.Email</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Tip abonament:</div>
+                                    <div class="col-md-8">@user.Tip_Abonament</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Data înregistrării:</div>
+                                    <div class="col-md-8">@user.Data_Inregistrare.ToString("dd MMMM yyyy")</div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item mb-3">
+                                <h5 class="text-danger">Activitate</h5>
+                                <hr />
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Filme în listă:</div>
+                                    <div class="col-md-8">@user.ListaMea.Count</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Recenzii scrise:</div>
+                                    <div class="col-md-8">@user.Recenzii.Count</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-4 fw-bold">Filme vizionate:</div>
+                                    <div class="col-md-8">@user.IstoricVizionari.Count</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left"></i> Înapoi la pagina principală
+                    </a>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-box-arrow-right"></i> Deconectare
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Image Modal -->
+<div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="profileImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="profileImageModalLabel">Schimbă imaginea de profil</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="UpdateProfileImage" asp-controller="Account" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="profileImage" class="form-label">Alege o imagine nouă</label>
+                        <input type="file" class="form-control" id="profileImage" name="ProfileImage" accept="image/*" required>
+                        <div class="form-text">Formatele acceptate: JPG, PNG, GIF. Dimensiune maximă: 5MB.</div>
+                    </div>
+                    
+                    @if (!string.IsNullOrEmpty(Model.CurrentProfileImagePath))
+                    {
+                        <div class="d-flex justify-content-center mb-3">
+                            <img src="@Model.CurrentProfileImagePath" alt="Imagine profil curentă" class="img-thumbnail" style="max-height: 150px;">
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    @if (!string.IsNullOrEmpty(Model.CurrentProfileImagePath))
+                    {
+                        <a asp-action="RemoveProfileImage" asp-controller="Account" class="btn btn-outline-secondary" onclick="return confirm('Ești sigur că vrei să elimini imaginea de profil?')">
+                            <i class="bi bi-trash"></i> Elimină
+                        </a>
+                    }
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                    <button type="submit" class="btn btn-danger">Salvează</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

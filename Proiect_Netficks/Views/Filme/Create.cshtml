@@ -1,0 +1,89 @@
+﻿@model Proiect_Netficks.Models.Film
+
+@{
+    ViewData["Title"] = "Adaugă film";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Adaugă film nou</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Titlu" class="control-label">Titlu</label>
+                            <input asp-for="Titlu" class="form-control" />
+                            <span asp-validation-for="Titlu" class="text-danger"></span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Gen_ID" class="control-label">Gen</label>
+                                    <select asp-for="Gen_ID" class="form-control" asp-items="ViewBag.Gen_ID"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="An_Lansare" class="control-label">An lansare</label>
+                                    <input asp-for="An_Lansare" class="form-control" type="number" min="1900" max="2100" />
+                                    <span asp-validation-for="An_Lansare" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Durata" class="control-label">Durata (minute)</label>
+                                    <input asp-for="Durata" class="form-control" type="number" min="1" />
+                                    <span asp-validation-for="Durata" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Descriere" class="control-label">Descriere</label>
+                            <textarea asp-for="Descriere" class="form-control" rows="5"></textarea>
+                            <span asp-validation-for="Descriere" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+                            <button type="submit" class="btn btn-play">Salvează film</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-white">
+                    <h5 class="card-title">Instrucțiuni</h5>
+                    <p>Completați toate câmpurile pentru a adăuga un film nou în baza de date.</p>
+                    <ul>
+                        <li>Titlul este obligatoriu și trebuie să aibă maxim 100 caractere</li>
+                        <li>Alegeți genul din lista predefinită</li>
+                        <li>Anul lansării trebuie să fie un număr valid</li>
+                        <li>Durata este măsurată în minute</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-5 pb-5"></div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

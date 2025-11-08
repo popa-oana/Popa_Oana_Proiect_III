@@ -1,0 +1,145 @@
+@{
+    ViewData["Title"] = "Acasă";
+}
+
+<div class="container mt-4">
+    <h2>Continuă vizionarea</h2>
+    <div class="d-flex flex-wrap">
+        <div class="movie-card">
+            <a href="#" class="active">
+                <img src="~/images/movie-placeholder-1.jpg" class="img-fluid" alt="Film 1">
+            </a>
+            <div class="progress-container mt-2">
+                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="btn-group w-100 mt-2">
+                <button class="dropdown-toggle w-100 btn-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Opțiuni
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Continuă redarea</a></li>
+                    <li><a class="dropdown-item" href="#">Reia de la început</a></li>
+                    <li><a class="dropdown-item" href="#">Elimină</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img src="~/images/serie-placeholder-1.jpg" class="img-fluid" alt="Serie 1">
+            <div class="progress-container mt-2">
+                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="btn-group w-100 mt-2">
+                <button class="dropdown-toggle w-100 btn-gradient" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Opțiuni
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Continuă redarea</a></li>
+                    <li><a class="dropdown-item" href="#">Reia de la început</a></li>
+                    <li><a class="dropdown-item" href="#">Următorul episod</a></li>
+                    <li><a class="dropdown-item" href="#">Elimină</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2>Recomandări filme</h2>
+    <div class="d-flex flex-wrap">
+        <div class="movie-card">
+            <img src="~/images/movie-placeholder-2.jpg" class="img-fluid" alt="Film 1">
+            <a href="#">
+                <button class="btn-play w-100 mt-2">Play</button>
+            </a>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+        <div class="movie-card">
+            <img src="~/images/movie-placeholder-3.jpg" class="img-fluid" alt="Film 2">
+            <button class="btn-play w-100 mt-2">Play</button>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+        <div class="movie-card">
+            <img src="~/images/movie-placeholder-4.jpg" class="img-fluid" alt="Film 3">
+            <button class="btn-play w-100 mt-2">Play</button>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <h2>Recomandări seriale</h2>
+    <div class="d-flex flex-wrap">
+        <div class="movie-card">
+            <img src="~/images/serie-placeholder-2.jpg" class="img-fluid" alt="Serie 2">
+            <button class="btn-play w-100 mt-2">Play</button>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+        <div class="movie-card">
+            <img src="~/images/serie-placeholder-3.jpg" class="img-fluid" alt="Serie 3">
+            <button class="btn-play w-100 mt-2">Play</button>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+        <div class="movie-card">
+            <img src="~/images/serie-placeholder-4.jpg" class="img-fluid" alt="Serie 4">
+            <button class="btn-play w-100 mt-2">Play</button>
+            <button class="btn-list w-100 mt-2">Adaugă în lista mea</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div asp-authorize-roles="Premium,Admin" class="mb-4">
+                <a asp-controller="Filme" asp-action="Index" class="btn-gradient btn-lg">Explorează toate filmele</a>
+            </div>
+            
+            <div asp-authorize-roles="Basic" class="mb-4">
+                <a href="#" class="btn-gradient btn-lg">Actualizează la Premium pentru a accesa toate filmele</a>
+            </div>
+            
+            <div asp-authorize="false" class="mb-4">
+                <p class="lead mb-3">Pentru a accesa conținutul complet al platformei, te rugăm să te autentifici.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a asp-controller="Account" asp-action="Login" class="btn-outline-gradient">Autentificare</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn-gradient">Înregistrare</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin-only content -->
+<div asp-authorize-roles="Admin" class="container mt-5 mb-5">
+    <div class="card border-danger shadow-lg">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0"><i class="bi bi-shield-lock me-2"></i>Panou Administrator</h3>
+        </div>
+        <div class="card-body">
+            <p class="lead">Bine ai venit în panoul de administrare rapid. Ai acces la următoarele funcționalități:</p>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-3">
+                    <div class="d-grid">
+                        <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-danger btn-lg">
+                            <i class="bi bi-speedometer2 me-2"></i>Panou Principal
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="d-grid">
+                        <a asp-controller="Admin" asp-action="Users" class="btn btn-outline-danger btn-lg">
+                            <i class="bi bi-people me-2"></i>Gestionare Utilizatori
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="d-grid">
+                        <a asp-controller="Admin" asp-action="Statistics" class="btn btn-outline-danger btn-lg">
+                            <i class="bi bi-bar-chart me-2"></i>Statistici Platformă
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

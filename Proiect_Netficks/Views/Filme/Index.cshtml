@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Proiect_Netficks.Models.Film>
+@{
+    ViewData["Title"] = "Filme";
+}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1>Gestionare Filme</h1>
+        </div>
+        <div class="col-md-6 text-end">
+            <a asp-action="Create" class="btn btn-play">Adaugă film nou</a>
+        </div>
+    </div>
+    <div class="card mb-5">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Titlu)</th>
+                            <th>@Html.DisplayNameFor(model => model.An_Lansare)</th>
+                            <th>@Html.DisplayNameFor(model => model.Durata)</th>
+                            <th>@Html.DisplayNameFor(model => model.Gen)</th>
+                            <th>Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Titlu)</td>
+                                <td>@Html.DisplayFor(modelItem => item.An_Lansare)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Durata) minute</td>
+                                <td>@Html.DisplayFor(modelItem => item.Gen.Nume_Gen)</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a asp-action="Edit" asp-route-id="@item.Film_ID" class="btn btn-sm btn-outline-primary me-1">Editare</a>
+                                        <a asp-action="Details" asp-route-id="@item.Film_ID" class="btn btn-sm btn-outline-info me-1">Detalii</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Film_ID" class="btn btn-sm btn-outline-danger">Șterge</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Spațiu suplimentar pentru subsol -->
+    <div class="mb-5 pb-5"></div>
+</div>

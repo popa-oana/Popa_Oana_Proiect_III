@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Panou de Administrare";
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-dark text-white shadow-lg border-danger">
+                <div class="card-body p-4">
+                    <h1 class="display-4 mb-3">Panou de Administrare</h1>
+                    <p class="lead">Bine ați venit în panoul de administrare NetFlicks. Aici puteți gestiona utilizatorii, conținutul și statisticile platformei.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0"><i class="bi bi-people-fill me-2"></i>Gestionare Utilizatori</h4>
+                </div>
+                <div class="card-body">
+                    <p>Vizualizați și gestionați toți utilizatorii platformei. Modificați rolurile și permisiunile acestora.</p>
+                    <a asp-controller="Admin" asp-action="Users" class="btn btn-outline-danger mt-3">
+                        <i class="bi bi-arrow-right-circle me-2"></i>Accesați
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0"><i class="bi bi-film me-2"></i>Gestionare Conținut</h4>
+                </div>
+                <div class="card-body">
+                    <p>Adăugați, modificați sau ștergeți filme și seriale din platformă. Actualizați informațiile despre conținut.</p>
+                    <a asp-controller="Filme" asp-action="Index" class="btn btn-outline-danger mt-3">
+                        <i class="bi bi-arrow-right-circle me-2"></i>Accesați
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0"><i class="bi bi-bar-chart-fill me-2"></i>Statistici</h4>
+                </div>
+                <div class="card-body">
+                    <p>Vizualizați statistici despre utilizatori, conținut și activitatea de pe platformă.</p>
+                    <a asp-controller="Admin" asp-action="Statistics" class="btn btn-outline-danger mt-3">
+                        <i class="bi bi-arrow-right-circle me-2"></i>Accesați
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

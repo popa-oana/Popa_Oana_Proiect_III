@@ -1,0 +1,53 @@
+﻿@model Proiect_Netficks.Models.Film
+@{
+    ViewData["Title"] = "Șterge film";
+}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Confirmare ștergere</h1>
+            <h4 class="text-danger">Ești sigur că vrei să ștergi acest film?</h4>
+            <!-- Butoane plasate aici -->
+            <form asp-action="Delete" method="post" class="mt-3">
+                <button type="submit" class="btn btn-danger me-2 mb-2">
+                    <i class="fas fa-trash-alt me-2"></i>Șterge definitiv
+                </button>
+                <a asp-action="Index" class="btn btn-secondary mb-2">
+                    <i class="fas fa-arrow-left me-2"></i>Înapoi la listă
+                </a>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Atenție</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Această acțiune este ireversibilă. Odată șters, filmul nu va mai putea fi recuperat.
+                        Toate referințele la acest film vor fi de asemenea șterse din lista de vizionare și istoricul utilizatorilor.
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h5 class="card-title">Detalii film</h5>
+                    <dl class="row">
+                        <dt class="col-sm-3">Titlu</dt>
+                        <dd class="col-sm-9">@Model.Titlu</dd>
+                        <dt class="col-sm-3">Gen</dt>
+                        <dd class="col-sm-9">@Model.Gen.Nume_Gen</dd>
+                        <dt class="col-sm-3">Durata</dt>
+                        <dd class="col-sm-9">@Model.Durata minute</dd>
+                        <dt class="col-sm-3">Descriere</dt>
+                        <dd class="col-sm-9">@Model.Descriere</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Adăugare spațiu la final pentru a preveni suprapunerea subsolului -->
+    <div class="mb-5 pb-5"></div>
+</div>
