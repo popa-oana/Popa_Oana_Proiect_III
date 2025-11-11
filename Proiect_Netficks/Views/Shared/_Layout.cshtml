@@ -47,6 +47,11 @@
                         {
                             <li class="nav-item"><a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Filme" ? "active" : "")" asp-controller="Filme" asp-action="Index">Filme</a></li>
                         }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Seriale" ? "active" : "")" asp-controller="Seriale" asp-action="Index">Seriale</a> </li>
+                        }
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item"><a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Admin" ? "active" : "")" asp-controller="Admin" asp-action="Index">Admin</a></li>

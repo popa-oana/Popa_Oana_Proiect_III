@@ -1,65 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\",
+  "WorkspaceRootPath": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\controllers\\filmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\controllers\\filmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\data\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\controllers\\serialecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\controllers\\serialecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\migrations\\20250515210726_amreusit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\migrations\\20250515210726_amreusit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\migrations\\20250515200107_iwillkiillmyself.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\migrations\\20250515200107_iwillkiillmyself.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\migrations\\20250515194354_imcrying.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\migrations\\20250515194354_imcrying.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\views\\filme\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\filme\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\views\\filme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\filme\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\views\\filme\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\filme\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\popa_oana_maria_proiect_netficks\\proiect_netficks\\proiect_netficks\\migrations\\20250515212613_wannasleep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\migrations\\20250515212613_wannasleep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -69,185 +54,140 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Services\\AuthService.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:33:28.896Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "20250515212613_wannasleep.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515212613_wannasleep.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Migrations\\20250515212613_wannasleep.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515212613_wannasleep.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Migrations\\20250515212613_wannasleep.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:26:14.254Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T19:42:09.27Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FilmeController.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\FilmeController.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\FilmeController.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\FilmeController.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Controllers\\FilmeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKUAAAAnAAAAAAAAAA==",
+              "Title": "DBInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Data\\DBInitializer.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Data\\DBInitializer.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Data\\DBInitializer.cs",
+              "RelativeToolTip": "Proiect_Netficks\\Data\\DBInitializer.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T21:25:51.598Z",
+              "WhenOpened": "2025-11-11T18:35:13.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAvAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Program.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Program.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Program.cs",
+              "RelativeToolTip": "Proiect_Netficks\\Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:34:46.777Z"
+              "WhenOpened": "2025-11-11T18:34:42.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SerialeController.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Controllers\\SerialeController.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\SerialeController.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Controllers\\SerialeController.cs",
+              "RelativeToolTip": "Proiect_Netficks\\Controllers\\SerialeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T18:24:10.23Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:36:56.173Z"
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Proiect_Netficks\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAcwDwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T18:19:59.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dbo.AspNetUsers.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.AspNetUsers.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-05-15T21:02:04.481Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "20250515210726_amreusit.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515210726_amreusit.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Migrations\\20250515210726_amreusit.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515210726_amreusit.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Migrations\\20250515210726_amreusit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T21:07:27.065Z"
+              "DocumentIndex": 4,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Proiect_Netficks\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T18:18:02.125Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "20250515200107_IWillKiillMyself.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515200107_IWillKiillMyself.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Migrations\\20250515200107_IWillKiillMyself.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515200107_IWillKiillMyself.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Migrations\\20250515200107_IWillKiillMyself.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "Proiect_Netficks\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T20:01:07.493Z"
+              "WhenOpened": "2025-11-11T18:17:33.726Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "20250515194354_Imcrying.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515194354_Imcrying.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Migrations\\20250515194354_Imcrying.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Migrations\\20250515194354_Imcrying.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Migrations\\20250515194354_Imcrying.cs",
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\ViewModels\\HomeViewModel.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\HomeViewModel.cs",
+              "RelativeToolTip": "Proiect_Netficks\\ViewModels\\HomeViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T19:43:54.681Z"
+              "WhenOpened": "2025-11-11T18:16:12.042Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Proiect_Netficks\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T19:29:15.508Z"
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Proiect_Netficks\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T18:12:40.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Proiect_Netficks\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T18:14:15.086Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Details.cshtml",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Details.cshtml",
-              "RelativeToolTip": "Proiect_Netficks\\Views\\Filme\\Details.cshtml",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAmwA4AAAAKAAAAAAAAAA==",
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Proiect_Netficks\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T21:54:47.869Z"
+              "WhenOpened": "2025-11-11T18:14:11.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "Proiect_Netficks\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAF8BAAAAAAAAAIBJwOEAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-04-03T21:45:35.119Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Index.cshtml",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Index.cshtml",
-              "RelativeToolTip": "Proiect_Netficks\\Views\\Filme\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwC4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T21:27:36.765Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
-              "RelativeToolTip": "Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAkwFwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T20:55:26.015Z"
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Proiect_Netficks\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Proiect_Netficks\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T18:12:30.398Z"
             }
           ]
         }

@@ -1,0 +1,95 @@
+﻿@model Proiect_Netficks.Models.Serial
+@{
+    ViewData["Title"] = "Detalii serial";
+}
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>@Model.Titlu</h1>
+            <p class="text-muted">@Model.An_Aparitie | @Model.Numar_Sezoane sezoane | @Model.Gen.Nume_Gen</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@(string.IsNullOrEmpty(Model.ImagineUrl) ? "/images/series-placeholder-1.jpg" : Model.ImagineUrl)" class="card-img-top" alt="@Model.Titlu">
+                <div class="card-body text-center">
+                    <button class="btn btn-play w-100 mb-2">Play</button>
+                    <button class="btn-list w-100">Adaugă în lista mea</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Despre serial</h3>
+                    <dl class="row">
+                        <dt class="col-sm-3">Titlu</dt>
+                        <dd class="col-sm-9">@Model.Titlu</dd>
+                        <dt class="col-sm-3">An apariție</dt>
+                        <dd class="col-sm-9">@Model.An_Aparitie</dd>
+                        <dt class="col-sm-3">Număr sezoane</dt>
+                        <dd class="col-sm-9">@Model.Numar_Sezoane</dd>
+                        <dt class="col-sm-3">Gen</dt>
+                        <dd class="col-sm-9">@Model.Gen.Nume_Gen</dd>
+                        <dt class="col-sm-3">Descriere</dt>
+                        <dd class="col-sm-9">@Model.Descriere</dd>
+                    </dl>
+                </div>
+            </div>
+
+            @if (Model.Episoade != null && Model.Episoade.Any())
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Episoade</h3>
+                        <div class="accordion" id="episodeAccordion">
+                            @foreach (var sezon in Model.Episoade.GroupBy(e => e.Numar_Sezon).OrderBy(g => g.Key))
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading@(sezon.Key)">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse@(sezon.Key)" aria-expanded="false" aria-controls="collapse@(sezon.Key)">
+                                            Sezonul @sezon.Key
+                                        </button>
+                                    </h2>
+                                    <div id="collapse@(sezon.Key)" class="accordion-collapse collapse" aria-labelledby="heading@(sezon.Key)" data-bs-parent="#episodeAccordion">
+                                        <div class="accordion-body">
+                                            <ul class="list-group">
+                                                @foreach (var episod in sezon.OrderBy(e => e.Numar_Episod))
+                                                {
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <strong>Episodul @episod.Numar_Episod:</strong> @episod.Titlu
+                                                            <small class="d-block text-muted">@episod.Durata minute</small>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-play">Play</button>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="card mb-5">
+                <div class="card-body">
+                    <h3 class="card-title">Acțiuni administrative</h3>
+                    <div class="d-flex">
+                        <a asp-action="Edit" asp-route-id="@Model.Serial_ID" class="btn btn-outline-primary me-2">Editare</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Serial_ID" class="btn btn-outline-danger">Șterge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Spațiu suplimentar pentru subsol -->
+    <div class="mb-5 pb-5"></div>
+</div>

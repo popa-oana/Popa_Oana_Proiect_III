@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks.csproj": {}
+    "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Proiect_Netficks.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks.csproj": {
+    "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Proiect_Netficks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks.csproj",
+        "projectUniqueName": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Proiect_Netficks.csproj",
         "projectName": "Proiect_Netficks",
-        "projectPath": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks.csproj",
+        "projectPath": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Proiect_Netficks.csproj",
         "packagesPath": "C:\\Users\\Oana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\obj\\",
+        "outputPath": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

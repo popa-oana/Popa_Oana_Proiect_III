@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Proiect_Netficks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b76c8f6ae2be6196948a49a5a34985628e85e253")]
 [assembly: System.Reflection.AssemblyProductAttribute("Proiect_Netficks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Proiect_Netficks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

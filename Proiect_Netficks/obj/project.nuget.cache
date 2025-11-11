@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TUiJ1dIrEhQ=",
+  "dgSpecHash": "dbz+xjlKWfk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Oana\\Desktop\\Popa_Oana_Maria_Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks\\Proiect_Netficks.csproj",
+  "projectFilePath": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Proiect_Netficks.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oana\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Oana\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
