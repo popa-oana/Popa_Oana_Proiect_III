@@ -1,4 +1,4 @@
-﻿@model Proiect_Netficks.Models.Serial
+@model Proiect_Netficks.Models.Serial
 @{
     ViewData["Title"] = "Detalii serial";
 }
@@ -40,8 +40,8 @@
                     </dl>
                 </div>
             </div>
-
-            @if (Model.Episoade != null && Model.Episoade.Any())
+            
+            @if(Model.Episoade != null && Model.Episoade.Any())
             {
                 <div class="card mb-4">
                     <div class="card-body">
@@ -51,7 +51,7 @@
                             {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading@(sezon.Key)">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
                                                 data-bs-target="#collapse@(sezon.Key)" aria-expanded="false" aria-controls="collapse@(sezon.Key)">
                                             Sezonul @sezon.Key
                                         </button>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             }
-
+            
             <div class="card mb-5">
                 <div class="card-body">
                     <h3 class="card-title">Acțiuni administrative</h3>

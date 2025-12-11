@@ -1,4 +1,4 @@
-﻿using Proiect_Netficks.Data.Repositories;
+using Proiect_Netficks.Data.Repositories;
 using Proiect_Netficks.Models;
 using Proiect_Netficks.Services.Interfaces;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace Proiect_Netficks.Services
         {
             // Handle null parameters to avoid null reference exceptions
             string safeTitle = title ?? string.Empty;
-
+            
             return await _filmRepository.SearchFilmsAsync(safeTitle, year, genreId);
         }
     }

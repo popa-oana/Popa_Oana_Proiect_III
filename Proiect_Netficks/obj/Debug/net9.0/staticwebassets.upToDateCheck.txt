@@ -1,5 +1,6 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\profiles\38c2609d-eaee-4b8e-92b4-a4aa61bef8df_Oana.jpeg
 wwwroot\images\profiles\a60da6a2-bba3-4f50-995e-033c9855dd2a_Poza 7.jpg
 wwwroot\images\profiles\ce282f5f-1310-4efc-b177-f1a6ace6301b_Poza 3.png
 wwwroot\images\profiles\f5705dbf-3cd7-4677-9430-a01646453933_Poza 13.jpg

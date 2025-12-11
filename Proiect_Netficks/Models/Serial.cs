@@ -1,4 +1,4 @@
-﻿// Models/Serial.cs
+// Models/Serial.cs
 using Proiect_Netficks.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -31,10 +31,10 @@ namespace Proiect_Netficks.Models
         public int Numar_Sezoane { get; set; }
 
         public string Descriere { get; set; } = string.Empty;
-
+        
         [StringLength(255)]
         public string? ImagineUrl { get; set; } = "/images/series-placeholder-1.jpg";
-
+        
         [StringLength(255)]
         public string? TrailerUrl { get; set; }
 
