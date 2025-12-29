@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|c:\\users\\oana\\desktop\\proiect_netflicks\\proiect_netficks\\viewmodels\\serialdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A063F12E-0EBA-47F1-907D-647D7353EEE1}|Proiect_Netficks\\Proiect_Netficks.csproj|solutionrelative:proiect_netficks\\viewmodels\\serialdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -73,6 +76,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Microsoft.NET.Sdk.StaticWebAssets.Compression.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.Compression.targets",
+              "ViewState": "AgIAAGIBAAAAAAAAAAAAAPYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-11-23T21:49:56.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SerialDetailsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\SerialDetailsViewModel.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\ViewModels\\SerialDetailsViewModel.cs",
@@ -85,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FilmDetailsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\ViewModels\\FilmDetailsViewModel.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\ViewModels\\FilmDetailsViewModel.cs",
@@ -98,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FilmService.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Services\\FilmService.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Services\\FilmService.cs",
@@ -111,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Seriale\\Edit.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Seriale\\Edit.cshtml",
@@ -123,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Edit.cshtml",
@@ -135,7 +151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Seriale\\Details.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Seriale\\Details.cshtml",
@@ -147,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Filme\\Details.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Details.cshtml",
@@ -159,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Filme\\Delete.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Delete.cshtml",
@@ -171,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Seriale\\Create.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Seriale\\Create.cshtml",
@@ -183,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Create.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Filme\\Create.cshtml.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Create.cshtml.cs",
@@ -195,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Views\\Filme\\Create.cshtml",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Views\\Filme\\Create.cshtml",
@@ -207,7 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FilmRepository.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Repositories\\FilmRepository.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Repositories\\FilmRepository.cs",
@@ -219,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "dbo.AspNetUsers.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.AspNetUsers.sql",
@@ -228,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "dbo.Filme.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.Filme.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NetFlicksDB/True/SqlTable/dbo.Filme.sql",
@@ -237,7 +253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Oana\\Desktop\\Proiect_Netflicks\\Proiect_Netficks\\Program.cs",
               "RelativeDocumentMoniker": "Proiect_Netficks\\Program.cs",

@@ -1,4 +1,4 @@
-﻿using Proiect_Netficks.Models;
+using Proiect_Netficks.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,15 +17,18 @@ namespace Proiect_Netficks.Models
         public int? Serial_ID { get; set; }
 
         public DateTime Data_Creare { get; set; }
+        
+        // Am eliminat [NotMapped] pentru a permite persistența în baza de date
+        public VizionareStatus Status { get; set; } = VizionareStatus.VreauSaVad;
 
         // Navigation properties
         [ForeignKey("Utilizator_ID")]
-        public virtual Utilizator Utilizator { get; set; }
+        public virtual Utilizator Utilizator { get; set; } = null!;
 
         [ForeignKey("Film_ID")]
-        public virtual Film Film { get; set; }
+        public virtual Film? Film { get; set; }
 
         [ForeignKey("Serial_ID")]
-        public virtual Serial Serial { get; set; }
+        public virtual Serial? Serial { get; set; }
     }
 }
