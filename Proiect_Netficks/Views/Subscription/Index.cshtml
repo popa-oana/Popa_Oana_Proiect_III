@@ -1,0 +1,185 @@
+@{
+    ViewData["Title"] = "Abonamente";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/subscription.css" />
+}
+
+<div class="container top-container">
+  <h2>Abonamente</h2>
+
+  <div class="row">
+    <!-- Plan Basic -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Basic</h5>
+          <p class="card-text">Acest plan este ideal pentru utilizatorii care nu au nevoie de o rezoluție mare și doresc acces la conținut de calitate decentă pe un singur dispozitiv.</p>
+          <p class="card-text">Rezoluție: 720p</p>
+          <p class="card-text">Limitează accesul la unele funcționalități premium ale platformei. Vei putea viziona filme și seriale pe un singur dispozitiv în același timp.</p>
+          <p class="card-text">Preț: 10 RON/lună</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn subscription-btn" data-plan="Basic" @(ViewBag.IsAdmin ? "disabled" : "")>Abonează-te</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan Standard -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Standard</h5>
+          <p class="card-text">Pentru utilizatorii care doresc o calitate video mai bună și posibilitatea de a viziona pe mai multe dispozitive simultan.</p>
+          <p class="card-text">Rezoluție: Full HD (1080p)</p>
+          <p class="card-text">Poți viziona conținut pe 2 dispozitive simultan. Ideal pentru familii mici sau grupuri de prieteni care doresc să vizioneze filme în calitate superioară pe două dispozitive diferite.</p>
+          <p class="card-text">Preț: 20 RON/lună</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn subscription-btn" data-plan="Standard" @(ViewBag.IsAdmin ? "disabled" : "")>Abonează-te</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plan Premium -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Premium</h5>
+          <p class="card-text">Pentru utilizatorii care doresc cea mai bună experiență video și posibilitatea de a viziona pe mai multe dispozitive simultan, inclusiv 4K.</p>
+          <p class="card-text">Rezoluție: 4K Ultra HD</p>
+          <p class="card-text">Acest plan îți oferă acces nelimitat la întreaga bibliotecă de conținut în cea mai bună calitate, inclusiv acces la filme și seriale exclusiviste.</p>
+          <p class="card-text">Poți viziona simultan pe 4 dispozitive. Ideal pentru familii mari sau grupuri care doresc să se bucure de o experiență premium pe multiple dispozitive.</p>
+          <p class="card-text">Preț: 30 RON/lună</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn subscription-btn" data-plan="Premium" @(ViewBag.IsAdmin ? "disabled" : "")>Abonează-te</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abonamentul curent -->
+  <div class="current-subscription">
+    <h4>Abonamentul tău curent:</h4>
+    <p id="currentPlan"><strong>@ViewBag.CurrentPlan</strong></p>
+  </div>
+
+</div>
+
+<!-- Modal Confirmare -->
+<div class="modal fade" id="confirmModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmă abonamentul</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Ești sigur că vrei să te abonezi la acest plan?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirmSubscription">Confirmă</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Succes -->
+<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modificare reușită!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Abonamentul tău a fost schimbat cu succes!
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        console.log('Subscription page loaded');
+        
+        // Highlight current plan
+        highlightCurrentPlan();
+        
+        // Handle subscription button click
+        $(".subscription-btn").on('click', function() {
+            console.log('Button clicked: ' + $(this).data("plan"));
+            var planName = $(this).data("plan");
+            $("#confirmSubscription").data("plan", planName);
+            $("#confirmModal").modal("show");
+        });
+        
+        // Handle confirmation button click
+        $("#confirmSubscription").on('click', function() {
+            console.log('Confirmation clicked');
+            var selectedPlan = $(this).data("plan");
+            console.log('Selected plan: ' + selectedPlan);
+            
+            // Call API to update subscription
+            $.ajax({
+                url: '@Url.Action("UpdateSubscription", "Subscription")',
+                type: 'POST',
+                data: {
+                    planType: selectedPlan,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function(response) {
+                    console.log('Success response:', response);
+                    if (response.success) {
+                        // Update current plan display
+                        $("#currentPlan").html("<strong>" + response.plan + "</strong>");
+                        
+                        // Close confirm modal
+                        $("#confirmModal").modal("hide");
+                        
+                        // Show success modal
+                        setTimeout(function() {
+                            $("#successModal").modal("show");
+                            
+                            // Highlight current plan
+                            highlightCurrentPlan();
+                            
+                            // Reload page after 2 seconds to update navigation based on new role
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 2000);
+                        }, 300);
+                    } else if (response.message) {
+                        // Show error message
+                        alert(response.message);
+                        $("#confirmModal").modal("hide");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', xhr, status, error);
+                    alert("A apărut o eroare la actualizarea abonamentului. Te rugăm să încerci din nou.");
+                }
+            });
+        });
+        
+        // Function to highlight current plan
+        function highlightCurrentPlan() {
+            var currentPlan = $("#currentPlan strong").text();
+            console.log('Current plan:', currentPlan);
+            $(".card").removeClass("border border-primary border-3");
+            
+            $(".card-title").each(function() {
+                if ($(this).text() === currentPlan) {
+                    $(this).closest(".card").addClass("border border-primary border-3");
+                }
+            });
+        }
+    });
+</script>
+}
+
+@* Add anti-forgery token *@
+@Html.AntiForgeryToken()

@@ -1,0 +1,247 @@
+@model Proiect_Netficks.ViewModels.IstoricViewModel
+@{
+    ViewData["Title"] = "Istoric vizionări";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Istoric vizionări</h2>
+        <form asp-action="StergeTot" method="post" onsubmit="return confirm('Ești sigur că vrei să ștergi tot istoricul de vizionări?');">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash me-2"></i>Șterge tot istoricul
+            </button>
+        </form>
+    </div>
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (!Model.IstoricFilme.Any() && !Model.IstoricEpisoade.Any())
+    {
+        <div class="alert alert-info">
+            <p>Nu ai vizionat niciun film sau serial încă.</p>
+            <a asp-controller="Titluri" asp-action="Index" class="btn-gradient mt-2 d-inline-block">Explorează conținut</a>
+        </div>
+    }
+    else
+    {
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="filme-tab" data-bs-toggle="tab" data-bs-target="#filme" type="button" role="tab" aria-controls="filme" aria-selected="true">
+                    <i class="bi bi-film me-2"></i>Filme
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="seriale-tab" data-bs-toggle="tab" data-bs-target="#seriale" type="button" role="tab" aria-controls="seriale" aria-selected="false">
+                    <i class="bi bi-tv me-2"></i>Seriale
+                </button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <!-- Tab Filme -->
+            <div class="tab-pane fade show active" id="filme" role="tabpanel" aria-labelledby="filme-tab">
+                @if (Model.IstoricFilme.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Film</th>
+                                    <th>Dată vizionare</th>
+                                    <th>Progres</th>
+                                    <th>Acțiuni</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.IstoricFilme)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <img src="@(string.IsNullOrEmpty(item.Film?.ImagineUrl) ? "/images/movie-placeholder-1.jpg" : item.Film.ImagineUrl)" 
+                                                         class="img-thumbnail" alt="@item.Film?.Titlu" style="width: 80px; height: 120px; object-fit: cover;">
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h5 class="mb-0">@item.Film?.Titlu</h5>
+                                                    <p class="text-muted mb-0">@item.Film?.An_Lansare | @item.Film?.Durata min</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">@item.Data_Vizionare.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td class="align-middle">
+                                            @{
+                                                var progres = 0;
+                                                var durata = item.Film?.Durata ?? 0;
+                                                if (durata > 0)
+                                                {
+                                                    progres = (int)Math.Min(100, (item.Timp_Vizionare / (durata * 60.0)) * 100);
+                                                }
+                                            }
+                                            <div class="progress">
+                                                <div class="progress-bar bg-gradient" role="progressbar" style="width: @progres%;" 
+                                                     aria-valuenow="@progres" aria-valuemin="0" aria-valuemax="100">
+                                                    @progres%
+                                                </div>
+                                            </div>
+                                            <small class="text-muted">@TimeSpan.FromSeconds(item.Timp_Vizionare).ToString(@"hh\:mm\:ss") din @(durata) min</small>
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="btn-group">
+                                                <a asp-controller="Vizionare" asp-action="Film" asp-route-id="@item.Film_ID" 
+                                                   class="btn btn-sm btn-gradient">
+                                                    <i class="bi bi-play-fill me-1"></i>Continuă
+                                                </a>
+                                                <form asp-action="Sterge" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@item.Istoric_ID" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger ms-2" 
+                                                            onclick="return confirm('Ești sigur că vrei să ștergi această înregistrare din istoric?');">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        <p>Nu ai vizionat niciun film încă.</p>
+                    </div>
+                }
+            </div>
+            
+            <!-- Tab Seriale -->
+            <div class="tab-pane fade" id="seriale" role="tabpanel" aria-labelledby="seriale-tab">
+                @if (Model.IstoricEpisoade.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Episod</th>
+                                    <th>Dată vizionare</th>
+                                    <th>Progres</th>
+                                    <th>Acțiuni</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.IstoricEpisoade)
+                                {
+                                    <tr>
+                                        <td class="align-middle">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0">
+                                                    <img src="@(string.IsNullOrEmpty(item.Episod?.Serial?.ImagineUrl) ? "/images/serie-placeholder-1.jpg" : item.Episod.Serial.ImagineUrl)" 
+                                                         class="img-thumbnail" alt="@item.Episod?.Serial?.Titlu" style="width: 80px; height: 120px; object-fit: cover;">
+                                                </div>
+                                                <div class="ms-3">
+                                                    <h5 class="mb-0">@item.Episod?.Serial?.Titlu</h5>
+                                                    <p class="text-muted mb-0">@item.Episod?.Serial?.An_Aparitie | @item.Episod?.Serial?.Numar_Sezoane sezoane</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
+                                            S@(item.Episod?.Numar_Sezon)E@(item.Episod?.Numar_Episod): @item.Episod?.Titlu
+                                        </td>
+                                        <td class="align-middle">@item.Data_Vizionare.ToString("dd.MM.yyyy HH:mm")</td>
+                                        <td class="align-middle">
+                                            @{
+                                                var progres = 0;
+                                                var durata = item.Episod?.Durata ?? 0;
+                                                if (durata > 0)
+                                                {
+                                                    progres = (int)Math.Min(100, (item.Timp_Vizionare / (durata * 60.0)) * 100);
+                                                }
+                                            }
+                                            <div class="progress">
+                                                <div class="progress-bar bg-gradient" role="progressbar" style="width: @progres%;" 
+                                                     aria-valuenow="@progres" aria-valuemin="0" aria-valuemax="100">
+                                                    @progres%
+                                                </div>
+                                            </div>
+                                            <small class="text-muted">@TimeSpan.FromSeconds(item.Timp_Vizionare).ToString(@"hh\:mm\:ss") din @(durata) min</small>
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="btn-group">
+                                                <a asp-controller="Vizionare" asp-action="Episod" 
+                                                   asp-route-serialId="@item.Episod?.Serial_ID" asp-route-episodId="@item.Episod_ID" 
+                                                   class="btn btn-sm btn-gradient">
+                                                    <i class="bi bi-play-fill me-1"></i>Continuă
+                                                </a>
+                                                <form asp-action="Sterge" method="post" class="d-inline">
+                                                    <input type="hidden" name="id" value="@item.Istoric_ID" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger ms-2" 
+                                                            onclick="return confirm('Ești sigur că vrei să ștergi această înregistrare din istoric?');">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        <p>Nu ai vizionat niciun episod încă.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .bg-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+    }
+    
+    .btn-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        color: white;
+    }
+    
+    .nav-tabs .nav-link {
+        color: #495057;
+    }
+    
+    .nav-tabs .nav-link.active {
+        color: #d32f2f;
+        font-weight: bold;
+        border-bottom: 2px solid #d32f2f;
+    }
+    
+    .table-dark {
+        background: linear-gradient(90deg, #333, #222);
+    }
+    
+    .table-hover tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+</style>
