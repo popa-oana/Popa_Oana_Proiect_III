@@ -222,9 +222,9 @@
             <div class="card-body">
                 <p class="lead">Ai acces rapid la următoarele funcționalități administrative:</p>
                 <div class="d-flex flex-wrap gap-3 mt-3">
-                    <a asp-controller="Titluri" asp-action="Index" class="btn btn-gradient"><i class="fas fa-plus-circle me-2"></i>Adaugă titlu nou</a>
+                    <a asp-controller="Titluri" asp-action="Create" class="btn btn-gradient"><i class="fas fa-plus-circle me-2"></i>Adaugă titlu nou</a>
                     <a asp-controller="Admin" asp-action="Users" class="btn btn-gradient"><i class="fas fa-users me-2"></i>Gestionare utilizatori</a>
-                    <a asp-controller="Admin" asp-action="Statistics" class="btn btn-gradient"><i class="fas fa-chart-bar me-2"></i>Statistici</a>
+                    <a asp-controller="Admin" asp-action="Stats" class="btn btn-gradient"><i class="fas fa-chart-bar me-2"></i>Statistici</a>
                 </div>
             </div>
         </div>

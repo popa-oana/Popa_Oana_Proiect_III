@@ -33,20 +33,22 @@ namespace Proiect_Netficks.Controllers
                     .OrderByDescending(f => f.Recenzii.Count > 0 ? f.Recenzii.Average(r => r.Nota) : 0)
                     .Take(6)
                     .ToListAsync(),
-
+                
                 // Get the newest films
                 NewestFilms = await _context.Filme
                     .Include(f => f.Gen)
                     .OrderByDescending(f => f.An_Lansare)
                     .Take(6)
                     .ToListAsync(),
-
+                
                 // Get the most popular serials
                 PopularSerials = await _context.Seriale
+                    .Include(s => s.Recenzii)
                     .Include(s => s.Gen)
+                    .OrderByDescending(s => s.Recenzii.Count > 0 ? s.Recenzii.Average(r => r.Nota) : 0)
                     .Take(6)
                     .ToListAsync(),
-
+                
                 // Get the newest serials
                 NewestSerials = await _context.Seriale
                     .Include(s => s.Gen)
@@ -54,7 +56,7 @@ namespace Proiect_Netficks.Controllers
                     .Take(6)
                     .ToListAsync()
             };
-
+            
             // If user is logged in, get their viewing history
             if (User.Identity.IsAuthenticated)
             {
@@ -63,7 +65,7 @@ namespace Proiect_Netficks.Controllers
                 {
                     var utilizator = await _context.Set<Utilizator>()
                         .FirstOrDefaultAsync(u => u.Email == user.Email);
-
+                    
                     if (utilizator != null)
                     {
                         // Get user's watchlist items with status
@@ -77,7 +79,7 @@ namespace Proiect_Netficks.Controllers
                     }
                 }
             }
-
+            
             return View(homeViewModel);
         }
 
@@ -92,8 +94,8 @@ namespace Proiect_Netficks.Controllers
         {
             // In a real implementation, this would connect to a service to remove the item
             // For now, we'll just redirect back to the home page with a success message
-            TempData["SuccessMessage"] = "Element eliminat cu succes din istoricul tau!";
-
+            TempData["SuccessMessage"] = "Element eliminat cu succes din istoricul tău!";
+            
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,4 +1,4 @@
-﻿using Proiect_Netficks.Models;
+using Proiect_Netficks.Models;
 
 namespace Proiect_Netficks.ViewModels
 {
