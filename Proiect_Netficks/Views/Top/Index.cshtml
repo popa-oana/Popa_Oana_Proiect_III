@@ -1,0 +1,152 @@
+@model Proiect_Netficks.ViewModels.TopViewModel
+@{
+    ViewData["Title"] = "Top săptămânal";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Top filme săptămâna aceasta</h2>
+    
+    <div class="row">
+        @for (int i = 0; i < Model.TopFilms.Count; i++)
+        {
+            var film = Model.TopFilms[i];
+            <div class="col-md-6 mb-4">
+                <div class="card bg-dark text-white top-card">
+                    <div class="row g-0">
+                        <div class="col-md-4 position-relative">
+                            <div class="rank-badge">@(i + 1)</div>
+                            <img src="~/images/movie-placeholder-@((i % 4) + 1).jpg" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="@film.Titlu">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@film.Titlu</h5>
+                                <p class="card-text text-muted">@film.An_Lansare | @film.Durata min</p>
+                                <p class="card-text description-text">@film.Descriere</p>
+                                <div class="d-flex mt-auto">
+                                    <a href="javascript:void(0)" onclick="playMovie(@film.Film_ID)" class="btn-play flex-grow-1 me-2">Play</a>
+                                    <a href="javascript:void(0)" onclick="addToWatchlist(@film.Film_ID, null)" class="btn-list flex-grow-1">Adaugă în listă</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <h2 class="mb-4 mt-5">Top seriale săptămâna aceasta</h2>
+    
+    <div class="row">
+        @for (int i = 0; i < Model.TopSeries.Count; i++)
+        {
+            var serial = Model.TopSeries[i];
+            <div class="col-md-6 mb-4">
+                <div class="card bg-dark text-white top-card">
+                    <div class="row g-0">
+                        <div class="col-md-4 position-relative">
+                            <div class="rank-badge">@(i + 1)</div>
+                            <img src="~/images/serie-placeholder-@((i % 4) + 1).jpg" class="img-fluid rounded-start h-100 w-100 object-fit-cover" alt="@serial.Titlu">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@serial.Titlu</h5>
+                                <p class="card-text text-muted">@serial.An_Aparitie | @serial.Numar_Sezoane sezoane</p>
+                                <p class="card-text description-text">@serial.Descriere</p>
+                                <div class="d-flex mt-auto">
+                                    <a href="javascript:void(0)" onclick="playMovie(@serial.Serial_ID)" class="btn-play flex-grow-1 me-2">Play</a>
+                                    <a href="javascript:void(0)" onclick="addToWatchlist(null, @serial.Serial_ID)" class="btn-list flex-grow-1">Adaugă în listă</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .top-card {
+        transition: all 0.3s ease;
+        border: none;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .top-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .rank-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 18px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+    }
+    
+    .description-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.9rem;
+    }
+    
+    .btn-play {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-play:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    .btn-list {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-list:hover {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    @@media (max-width: 767.98px) {
+        .top-card .row {
+            flex-direction: column;
+        }
+        
+        .top-card .col-md-4 {
+            height: 200px;
+        }
+    }
+</style>
