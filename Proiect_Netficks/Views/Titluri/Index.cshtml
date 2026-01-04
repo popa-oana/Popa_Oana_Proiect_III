@@ -1,0 +1,126 @@
+@model Proiect_Netficks.ViewModels.TitluriViewModel
+@{
+    ViewData["Title"] = "Titluri disponibile";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1>Titluri disponibile</h1>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="btn-group">
+                    <a asp-action="CreateFilm" class="btn btn-play me-2">
+                        <i class="bi bi-plus-circle me-2"></i>Adaugă Film
+                    </a>
+                    <a asp-action="CreateSerial" class="btn btn-play">
+                        <i class="bi bi-plus-circle me-2"></i>Adaugă Serial
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Filme</h2>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mb-5">
+        @foreach (var film in Model.Filme)
+        {
+            <div class="col">
+                <div class="card h-100 bg-dark text-white">
+                    <div class="card-img-container">
+                        <img src="@film.ImagineUrl" class="card-img-top" alt="@film.Titlu" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@film.Titlu</h5>
+                        <p class="card-text text-white">@film.An_Lansare | @film.Gen?.Nume_Gen</p>
+                        <p class="card-text">@(film.Descriere?.Length > 100 ? film.Descriere.Substring(0, 100) + "..." : film.Descriere)</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a asp-action="FilmDetails" asp-route-id="@film.Film_ID" class="btn btn-play">Detalii</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="btn-group">
+                                    <a asp-action="EditFilm" asp-route-id="@film.Film_ID" class="btn btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="DeleteFilm" asp-route-id="@film.Film_ID" class="btn btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Seriale</h2>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mb-5">
+        @foreach (var serial in Model.Seriale)
+        {
+            <div class="col">
+                <div class="card h-100 bg-dark text-white">
+                    <div class="card-img-container">
+                        <img src="@serial.ImagineUrl" class="card-img-top" alt="@serial.Titlu" style="height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@serial.Titlu</h5>
+                        <p class="card-text text-white">@serial.An_Aparitie | @serial.Gen?.Nume_Gen | @serial.Numar_Sezoane sezoane</p>
+                        <p class="card-text">@(serial.Descriere?.Length > 100 ? serial.Descriere.Substring(0, 100) + "..." : serial.Descriere)</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a asp-action="SerialDetails" asp-route-id="@serial.Serial_ID" class="btn btn-play">Detalii</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="btn-group">
+                                    <a asp-action="EditSerial" asp-route-id="@serial.Serial_ID" class="btn btn-outline-primary">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="DeleteSerial" asp-route-id="@serial.Serial_ID" class="btn btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card-img-container {
+        position: relative;
+    }
+
+    .premium-overlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+    }
+
+    .badge {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+</style>

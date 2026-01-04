@@ -1,0 +1,375 @@
+@model Proiect_Netficks.ViewModels.SerialDetailsViewModel
+@{
+    ViewData["Title"] = Model.Serial.Titlu;
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>@Model.Serial.Titlu</h1>
+            <p class="text-muted">@Model.Serial.An_Aparitie | @Model.Serial.Numar_Sezoane sezoane | @Model.Serial.Gen?.Nume_Gen</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@Model.Serial.ImagineUrl" class="card-img-top" alt="@Model.Serial.Titlu">
+                <div class="card-body text-center">
+                    <a asp-controller="Vizionare" asp-action="Serial" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-play w-100 mb-2">Vizionează</a>
+                    
+                    <div class="dropdown mb-2">
+                        <button class="btn-list w-100 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Adaugă în lista mea
+                        </button>
+                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <form asp-controller="ListaMea" asp-action="AddToWatchlist" method="post" class="px-2">
+                                    <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                    <input type="hidden" name="status" value="1" />
+                                    <button type="submit" class="dropdown-item">Vreau să văd</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form asp-controller="ListaMea" asp-action="AddToWatchlist" method="post" class="px-2">
+                                    <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                    <input type="hidden" name="status" value="2" />
+                                    <button type="submit" class="dropdown-item">Început</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form asp-controller="ListaMea" asp-action="AddToWatchlist" method="post" class="px-2">
+                                    <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                    <input type="hidden" name="status" value="3" />
+                                    <button type="submit" class="dropdown-item">În curs</button>
+                                </form>
+                            </li>
+                            <li>
+                                <form asp-controller="ListaMea" asp-action="AddToWatchlist" method="post" class="px-2">
+                                    <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                    <input type="hidden" name="status" value="4" />
+                                    <button type="submit" class="dropdown-item">Vizionat</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Despre serial</h3>
+                    <dl class="row">
+                        <dt class="col-sm-3">Titlu</dt>
+                        <dd class="col-sm-9">@Model.Serial.Titlu</dd>
+                        
+                        <dt class="col-sm-3">An apariție</dt>
+                        <dd class="col-sm-9">@Model.Serial.An_Aparitie</dd>
+                        
+                        <dt class="col-sm-3">Număr sezoane</dt>
+                        <dd class="col-sm-9">@Model.Serial.Numar_Sezoane</dd>
+                        
+                        <dt class="col-sm-3">Gen</dt>
+                        <dd class="col-sm-9">@Model.Serial.Gen?.Nume_Gen</dd>
+                        
+                        <dt class="col-sm-3">Descriere</dt>
+                        <dd class="col-sm-9">@Model.Serial.Descriere</dd>
+                        
+                        @if (!string.IsNullOrEmpty(Model.Serial.TrailerUrl))
+                        {
+                            <dt class="col-sm-3">Trailer</dt>
+                            <dd class="col-sm-9">
+                                <a href="@Model.Serial.TrailerUrl" target="_blank" class="btn btn-outline-danger">
+                                    <i class="bi bi-youtube"></i> Vezi trailer
+                                </a>
+                            </dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+            
+            <!-- Episoade -->
+            <div class="card mb-4">
+                <div class="card-header bg-gradient">
+                    <h3 class="card-title mb-0 text-white">Episoade</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.Serial.Episoade != null && Model.Serial.Episoade.Any())
+                    {
+                        <div class="accordion" id="accordionEpisoade">
+                            @{
+                                var sezoane = Model.Serial.Episoade.GroupBy(e => e.Numar_Sezon).OrderBy(g => g.Key);
+                            }
+                            
+                            @foreach (var sezon in sezoane)
+                            {
+                                <div class="accordion-item bg-dark text-white">
+                                    <h2 class="accordion-header" id="heading@(sezon.Key)">
+                                        <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(sezon.Key)" aria-expanded="false" aria-controls="collapse@(sezon.Key)">
+                                            Sezonul @sezon.Key
+                                        </button>
+                                    </h2>
+                                    <div id="collapse@(sezon.Key)" class="accordion-collapse collapse" aria-labelledby="heading@(sezon.Key)" data-bs-parent="#accordionEpisoade">
+                                        <div class="accordion-body">
+                                            <div class="list-group">
+                                                @foreach (var episod in sezon.OrderBy(e => e.Numar_Episod))
+                                                {
+                                                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <strong>Episodul @episod.Numar_Episod: @episod.Titlu</strong>
+                                                            <div><small>Durată: @episod.Durata minute</small></div>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-outline-light" onclick="vizionareSerie(@Model.Serial.Serial_ID, @episod.Episod_ID)">
+                                                            <i class="bi bi-play-fill"></i> Vizionează
+                                                        </button>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p>Nu există episoade disponibile pentru acest serial.</p>
+                    }
+                </div>
+            </div>
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="card mb-4">
+                    <div class="card-header bg-gradient">
+                        <h3 class="card-title mb-0 text-white">Acțiuni administrative</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <a asp-action="EditSerial" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-outline-primary me-2">Editare</a>
+                            <a asp-action="DeleteSerial" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-outline-danger">Șterge</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            <!-- Recenzii -->
+            <div class="card mb-4">
+                <div class="card-header bg-gradient">
+                    <h3 class="card-title mb-0 text-white">Recenzii</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.Serial.Recenzii != null && Model.Serial.Recenzii.Any())
+                    {
+                        <div class="mb-4">
+                            <h4>Nota medie: @Model.Serial.Recenzii.Average(r => r.Nota).ToString("F1")/10</h4>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar bg-success" role="progressbar" 
+                                     style="width: @(Model.Serial.Recenzii.Average(r => r.Nota) * 10)%;" 
+                                     aria-valuenow="@(Model.Serial.Recenzii.Average(r => r.Nota) * 10)" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    @Model.Serial.Recenzii.Average(r => r.Nota).ToString("F1")
+                                </div>
+                            </div>
+                        </div>
+                        
+                        @foreach (var recenzie in Model.Serial.Recenzii.OrderByDescending(r => r.Data_Postarii))
+                        {
+                            <div class="card mb-3 bg-dark">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>@recenzie.Utilizator?.Nume</strong>
+                                        <span class="badge bg-success ms-2">@recenzie.Nota/10</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-muted me-3">@recenzie.Data_Postarii.ToString("dd.MM.yyyy HH:mm")</small>
+                                        
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            var currentUserEmail = User.Identity.Name;
+                                            var isUsersReview = recenzie.Utilizator?.Email == currentUserEmail;
+                                            var isAdmin = User.IsInRole("Admin");
+                                            
+                                            @if (isUsersReview || isAdmin)
+                                            {
+                                                <div class="d-flex">
+                                                    <button type="button" class="btn-action-icon edit-icon" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#editRecenzieModal@(recenzie.Recenzie_ID)">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <form asp-controller="Recenzii" asp-action="Delete" method="post" class="d-inline">
+                                                        <input type="hidden" name="id" value="@recenzie.Recenzie_ID" />
+                                                        <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                                        <button type="submit" class="btn-action-icon delete-icon" onclick="return confirm('Ești sigur că vrei să ștergi această recenzie?');">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">@recenzie.Comentariu</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Edit Modal for this review -->
+                            <div class="modal fade" id="editRecenzieModal@(recenzie.Recenzie_ID)" tabindex="-1" aria-labelledby="editRecenzieModalLabel@(recenzie.Recenzie_ID)" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-dark" id="editRecenzieModalLabel@(recenzie.Recenzie_ID)">Editează recenzia</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form asp-controller="Recenzii" asp-action="Edit" method="post">
+                                            <div class="modal-body text-dark">
+                                                <input type="hidden" name="id" value="@recenzie.Recenzie_ID" />
+                                                <input type="hidden" name="serialId" value="@Model.Serial.Serial_ID" />
+                                                
+                                                <div class="mb-3">
+                                                    <label for="nota@(recenzie.Recenzie_ID)" class="form-label">Notă (1-10)</label>
+                                                    <input type="number" class="form-control" id="nota@(recenzie.Recenzie_ID)" name="nota" min="1" max="10" value="@recenzie.Nota" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="comentariu@(recenzie.Recenzie_ID)" class="form-label">Comentariu</label>
+                                                    <textarea class="form-control" id="comentariu@(recenzie.Recenzie_ID)" name="comentariu" rows="3" required>@recenzie.Comentariu</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                                                <button type="submit" class="btn btn-primary">Salvează</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Nu există recenzii pentru acest serial.</p>
+                    }
+                    
+                    <!-- Formular adăugare recenzie -->
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h4 class="mb-0">Adaugă o recenzie</h4>
+                            </div>
+                            <div class="card-body">
+                                @if (TempData["ErrorMessage"] != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        @TempData["ErrorMessage"]
+                                    </div>
+                                }
+                                @if (TempData["SuccessMessage"] != null)
+                                {
+                                    <div class="alert alert-success">
+                                        @TempData["SuccessMessage"]
+                                    </div>
+                                }
+                                
+                                <form asp-controller="Titluri" asp-action="AdaugaRecenzie" method="post">
+                                    <input type="hidden" name="Serial_ID" value="@Model.Serial.Serial_ID" />
+                                    
+                                    <div class="mb-3">
+                                        <label for="Nota" class="form-label">Notă (1-10)</label>
+                                        <select name="Nota" id="Nota" class="form-select">
+                                            @for (int i = 10; i >= 1; i--)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="Comentariu" class="form-label">Comentariu</label>
+                                        <textarea name="Comentariu" id="Comentariu" class="form-control" rows="3" required minlength="5" maxlength="1000"></textarea>
+                                    </div>
+                                    
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-gradient">Postează recenzia</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mt-4">
+                            <p class="mb-0">Trebuie să fii autentificat pentru a adăuga o recenzie. <a asp-controller="Account" asp-action="Login">Autentifică-te</a> sau <a asp-controller="Account" asp-action="Register">Înregistrează-te</a>.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+    }
+    
+    .btn-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+@section Scripts {
+    <script>
+        function adaugaInLista(filmId, serialId) {
+            // Implementare AJAX pentru adăugare în listă
+            fetch('/ListaMea/Adauga', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({
+                    filmId: filmId,
+                    serialId: serialId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Titlul a fost adăugat în lista ta!');
+                } else {
+                    alert('Eroare: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('A apărut o eroare la adăugarea în listă.');
+            });
+        }
+        
+        function vizionareSerie(serialId, episodId) {
+            window.location.href = `/Vizionare/Episod?serialId=${serialId}&episodId=${episodId}`;
+        }
+    </script>
+    
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

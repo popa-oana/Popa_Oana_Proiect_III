@@ -1,0 +1,129 @@
+@model Proiect_Netficks.Models.Serial
+
+@{
+    ViewData["Title"] = "Adaugă serial";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-white">Adaugă serial nou</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <form asp-action="CreateSerial" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Titlu" class="control-label text-white">Titlu</label>
+                            <input asp-for="Titlu" class="form-control" required />
+                            <span asp-validation-for="Titlu" class="text-danger"></span>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Gen_ID" class="control-label text-white">Gen</label>
+                                    <select asp-for="Gen_ID" class="form-control" asp-items="ViewBag.Gen_ID" required></select>
+                                    <span asp-validation-for="Gen_ID" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="An_Aparitie" class="control-label text-white">An apariție</label>
+                                    <input asp-for="An_Aparitie" class="form-control" type="number" min="1900" max="2100" required />
+                                    <span asp-validation-for="An_Aparitie" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Numar_Sezoane" class="control-label text-white">Număr sezoane</label>
+                                    <input asp-for="Numar_Sezoane" class="form-control" type="number" min="1" required />
+                                    <span asp-validation-for="Numar_Sezoane" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Descriere" class="control-label text-white">Descriere</label>
+                            <textarea asp-for="Descriere" class="form-control" rows="5" required></textarea>
+                            <span asp-validation-for="Descriere" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label asp-for="TrailerUrl" class="control-label text-white">URL Trailer (YouTube)</label>
+                            <input asp-for="TrailerUrl" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                            <span asp-validation-for="TrailerUrl" class="text-danger"></span>
+                            <small class="form-text text-white">Opțional: Introduceți URL-ul trailerului de pe YouTube</small>
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="Imagine" class="control-label text-white">Imagine serial</label>
+                            <input type="file" id="Imagine" name="Imagine" class="form-control" accept="image/*" />
+                            <small class="form-text text-white">Selectați o imagine pentru serial (format: JPG, PNG, max. 5MB)</small>
+                        </div>
+
+                        <div class="form-group d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+                            <button type="submit" class="btn btn-play">Salvează serial</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark">
+                <div class="card-body text-white">
+                    <h5 class="card-title">Instrucțiuni</h5>
+                    <p>Completați toate câmpurile pentru a adăuga un serial nou în baza de date.</p>
+                    <ul>
+                        <li>Titlul este obligatoriu și trebuie să aibă maxim 100 caractere</li>
+                        <li>Alegeți genul din lista predefinită</li>
+                        <li>Anul apariției trebuie să fie un număr valid</li>
+                        <li>Numărul de sezoane trebuie să fie cel puțin 1</li>
+                        <li>Descrierea este obligatorie</li>
+                        <li>URL-ul trailerului este opțional</li>
+                        <li>Imaginea serialului este opțională, dar recomandată</li>
+                    </ul>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle-fill me-2"></i> După ce adăugați serialul, puteți adăuga episoade pentru fiecare sezon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Validare client-side suplimentară
+        $(document).ready(function () {
+            $('form').on('submit', function (e) {
+                var year = parseInt($('#An_Aparitie').val());
+                var currentYear = new Date().getFullYear();
+                
+                if (year < 1900 || year > currentYear + 5) {
+                    alert('Anul apariției trebuie să fie între 1900 și ' + (currentYear + 5));
+                    e.preventDefault();
+                    return false;
+                }
+                
+                var seasons = parseInt($('#Numar_Sezoane').val());
+                if (seasons < 1) {
+                    alert('Numărul de sezoane trebuie să fie cel puțin 1');
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,62 @@
+@model Proiect_Netficks.Models.Film
+
+@{
+    ViewData["Title"] = "Ștergere film";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>Ești sigur că vrei să ștergi acest film?</h1>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Confirmare ștergere</h3>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close" onclick="window.location.href='@Url.Action("Index")'"></button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="@Model.ImagineUrl" alt="@Model.Titlu" class="img-fluid rounded" />
+                        </div>
+                        <div class="col-md-8">
+                            <h4>@Model.Titlu</h4>
+                            <dl class="row">
+                                <dt class="col-sm-4">An lansare</dt>
+                                <dd class="col-sm-8">@Model.An_Lansare</dd>
+                                
+                                <dt class="col-sm-4">Durată</dt>
+                                <dd class="col-sm-8">@Model.Durata minute</dd>
+                                
+                                <dt class="col-sm-4">Gen</dt>
+                                <dd class="col-sm-8">@Model.Gen?.Nume_Gen</dd>
+                                
+                                <dt class="col-sm-4">Descriere</dt>
+                                <dd class="col-sm-8">@Model.Descriere</dd>
+                            </dl>
+                            
+                            <div class="alert alert-warning">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i> Această acțiune este ireversibilă. Toate datele asociate acestui film (inclusiv recenzii, vizionări și referințe din lista utilizatorilor) vor fi șterse.
+                            </div>
+                            
+                            <form asp-action="DeleteFilm" method="post" class="mt-4">
+                                <input type="hidden" asp-for="Film_ID" />
+                                <div class="d-flex justify-content-between">
+                                    <a asp-action="Index" class="btn btn-outline-secondary">Anulează</a>
+                                    <button type="submit" class="btn btn-danger">Confirmă ștergerea</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
