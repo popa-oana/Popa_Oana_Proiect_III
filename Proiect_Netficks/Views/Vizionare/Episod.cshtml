@@ -1,0 +1,329 @@
+@model Proiect_Netficks.ViewModels.VizionareEpisodViewModel
+@{
+    ViewData["Title"] = $"{Model.Serial.Titlu} - {Model.Episod.Titlu}";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1>@Model.Serial.Titlu</h1>
+            <h3>@Model.Episod.Titlu</h3>
+            <p class="text-muted">Sezonul @Model.Episod.Numar_Sezon | Episodul @Model.Episod.Numar_Episod | @Model.Episod.Durata minute</p>
+        </div>
+        <div class="col-md-4 text-end">
+            <a asp-controller="Titluri" asp-action="SerialDetails" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-secondary">Înapoi la detalii</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body p-0">
+                    <div class="ratio ratio-16x9 position-relative">
+                        @if (!string.IsNullOrEmpty(Model.Episod.VideoUrl))
+                        {
+                            <iframe src="@GetEmbedUrl(Model.Episod.VideoUrl)" allowfullscreen></iframe>
+                        }
+                        else if (!string.IsNullOrEmpty(Model.Serial.TrailerUrl))
+                        {
+                            <iframe src="@GetEmbedUrl(Model.Serial.TrailerUrl)" allowfullscreen></iframe>
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center bg-dark text-white" style="height: 100%;">
+                                <div class="text-center">
+                                    <i class="bi bi-film" style="font-size: 5rem;"></i>
+                                    <h3 class="mt-3">Video indisponibil</h3>
+                                    <p>Acest episod nu are un video disponibil momentan.</p>
+                                </div>
+                            </div>
+                        }
+                        
+                        <!-- Controale video -->
+                        <div class="video-controls position-absolute bottom-0 start-0 end-0 p-3 bg-dark bg-opacity-75 text-white">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <button id="playPauseBtn" class="btn btn-light btn-sm">
+                                        <i class="bi bi-play-fill"></i>
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <div class="progress" style="height: 10px;">
+                                        <div id="progressBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <span id="currentTime">0:00</span> / <span id="duration">@GetFormattedDuration(Model.Episod.Durata)</span>
+                                </div>
+                                <div class="col-auto">
+                                    <button id="fullscreenBtn" class="btn btn-light btn-sm">
+                                        <i class="bi bi-fullscreen"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header bg-gradient">
+                    <h3 class="card-title mb-0 text-white">Descriere episod</h3>
+                </div>
+                <div class="card-body">
+                    <p>@Model.Episod.Descriere</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header bg-gradient">
+                    <h3 class="card-title mb-0 text-white">Despre serial</h3>
+                </div>
+                <div class="card-body">
+                    <img src="@Model.Serial.ImagineUrl" alt="@Model.Serial.Titlu" class="img-fluid rounded mb-3">
+                    
+                    <h4>@Model.Serial.Titlu</h4>
+                    <p class="text-muted">@Model.Serial.An_Aparitie | @Model.Serial.Numar_Sezoane sezoane | @Model.Serial.Gen?.Nume_Gen</p>
+                    
+                    <p>@Model.Serial.Descriere</p>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <a asp-controller="Titluri" asp-action="SerialDetails" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-outline-light">
+                            <i class="bi bi-info-circle me-2"></i>Detalii complete
+                        </a>
+                        <button class="btn btn-list" onclick="adaugaInLista(null, @Model.Serial.Serial_ID)">
+                            <i class="bi bi-plus-circle me-2"></i>Adaugă în lista mea
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-gradient">
+                    <h3 class="card-title mb-0 text-white">Episoade</h3>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        @{
+                            var episoade = ViewBag.Episoade as List<Proiect_Netficks.Models.Episod> ?? new List<Proiect_Netficks.Models.Episod>();
+                            foreach (var ep in episoade.OrderBy(e => e.Numar_Sezon).ThenBy(e => e.Numar_Episod))
+                            {
+                                var activeClass = ep.Episod_ID == Model.Episod.Episod_ID ? "active" : "";
+                                <a asp-action="Episod" asp-route-serialId="@Model.Serial.Serial_ID" asp-route-episodId="@ep.Episod_ID" 
+                                   class="list-group-item list-group-item-action @activeClass">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">S@(ep.Numar_Sezon)E@(ep.Numar_Episod): @ep.Titlu</h5>
+                                        <small>@ep.Durata min</small>
+                                    </div>
+                                    <p class="mb-1 text-truncate">@ep.Descriere</p>
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    private string GetEmbedUrl(string url)
+    {
+        if (string.IsNullOrEmpty(url))
+            return "";
+            
+        if (url.Contains("youtube.com/watch"))
+        {
+            var videoId = url.Split("v=")[1];
+            if (videoId.Contains("&"))
+            {
+                videoId = videoId.Split("&")[0];
+            }
+            return $"https://www.youtube.com/embed/{videoId}?autoplay=0";
+        }
+        else if (url.Contains("youtu.be"))
+        {
+            var videoId = url.Split("/").Last();
+            return $"https://www.youtube.com/embed/{videoId}?autoplay=0";
+        }
+        
+        return url;
+    }
+    
+    private string GetFormattedDuration(int minutes)
+    {
+        var hours = minutes / 60;
+        var mins = minutes % 60;
+        
+        if (hours > 0)
+        {
+            return $"{hours}:{mins:D2}:00";
+        }
+        else
+        {
+            return $"{mins}:00";
+        }
+    }
+}
+
+<style>
+    .bg-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+    }
+    
+    .video-controls {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .ratio:hover .video-controls {
+        opacity: 1;
+    }
+    
+    .list-group-item.active {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border-color: #d32f2f;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Simulare progres video
+        let episodId = @Model.Episod.Episod_ID;
+        let durata = @Model.Episod.Durata * 60; // Convertim în secunde
+        let currentTime = 0;
+        let isPlaying = false;
+        let progressInterval;
+        
+        // Inițializare controale
+        document.addEventListener('DOMContentLoaded', function() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeDisplay = document.getElementById('currentTime');
+            const videoContainer = document.querySelector('.ratio');
+            
+            // Buton play/pause
+            playPauseBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    // Pauză
+                    clearInterval(progressInterval);
+                    playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+                } else {
+                    // Play
+                    progressInterval = setInterval(updateProgress, 1000);
+                    playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+                }
+                
+                isPlaying = !isPlaying;
+            });
+            
+            // Buton fullscreen
+            fullscreenBtn.addEventListener('click', function() {
+                if (videoContainer.requestFullscreen) {
+                    videoContainer.requestFullscreen();
+                } else if (videoContainer.webkitRequestFullscreen) {
+                    videoContainer.webkitRequestFullscreen();
+                } else if (videoContainer.msRequestFullscreen) {
+                    videoContainer.msRequestFullscreen();
+                }
+            });
+            
+            // Click pe progress bar
+            progressBar.parentElement.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                currentTime = Math.floor(percent * durata);
+                updateProgressUI();
+                
+                // Actualizăm timpul de vizionare în baza de date
+                saveProgress();
+            });
+            
+            // Încărcăm progresul salvat
+            fetch(`/api/vizionare/progres?episodId=${episodId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.timpVizionare > 0) {
+                        currentTime = data.timpVizionare;
+                        updateProgressUI();
+                    }
+                })
+                .catch(error => console.error('Error loading progress:', error));
+        });
+        
+        function updateProgress() {
+            currentTime++;
+            
+            if (currentTime >= durata) {
+                clearInterval(progressInterval);
+                isPlaying = false;
+                document.getElementById('playPauseBtn').innerHTML = '<i class="bi bi-play-fill"></i>';
+            }
+            
+            updateProgressUI();
+            
+            // Salvăm progresul la fiecare 10 secunde
+            if (currentTime % 10 === 0) {
+                saveProgress();
+            }
+        }
+        
+        function updateProgressUI() {
+            const percent = (currentTime / durata) * 100;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+            document.getElementById('currentTime').textContent = formatTime(currentTime);
+        }
+        
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function saveProgress() {
+            // Trimitem timpul de vizionare către server
+            fetch('/Vizionare/ActualizeazaTimpVizionare', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({
+                    episodId: episodId,
+                    timpVizionare: currentTime
+                })
+            })
+            .catch(error => console.error('Error saving progress:', error));
+        }
+        
+        function adaugaInLista(filmId, serialId) {
+            // Implementare AJAX pentru adăugare în listă
+            fetch('/ListaMea/Adauga', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({
+                    filmId: filmId,
+                    serialId: serialId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Titlul a fost adăugat în lista ta!');
+                } else {
+                    alert('Eroare: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('A apărut o eroare la adăugarea în listă.');
+            });
+        }
+    </script>
+}

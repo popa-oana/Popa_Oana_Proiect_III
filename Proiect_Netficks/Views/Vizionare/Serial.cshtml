@@ -1,0 +1,91 @@
+@model Proiect_Netficks.ViewModels.VizionareSerialViewModel
+@{
+    ViewData["Title"] = Model.Serial.Titlu;
+    Layout = "_Layout";
+}
+
+<div class="player-container">
+    <div class="player-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="text-white">@Model.Serial.Titlu</h1>
+                    <p class="text-light">@Model.Serial.An_Aparitie | @Model.Serial.Numar_Sezoane sezoane | @Model.Serial.Gen?.Nume_Gen</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a asp-controller="Titluri" asp-action="SerialDetails" asp-route-id="@Model.Serial.Serial_ID" class="btn btn-outline-light">Înapoi la detalii</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="video-container mb-4">
+                        @if (!string.IsNullOrEmpty(Model.Serial.TrailerUrl))
+                        {
+                            <iframe width="100%" height="100%" src="@Model.Serial.TrailerUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        }
+                        else
+                        {
+                            <div class="no-video-placeholder">
+                                <i class="fas fa-film fa-3x"></i>
+                                <p>Niciun trailer disponibil</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card season-selector">
+                        <div class="card-header bg-dark text-white">
+                            <h4>Sezoane și Episoade</h4>
+                        </div>
+                        <div class="card-body">
+                            @if (Model.EpisoadeGrupate != null && Model.EpisoadeGrupate.Any())
+                            {
+                                <div class="accordion" id="seasonsAccordion">
+                                    @foreach (var season in Model.EpisoadeGrupate)
+                                    {
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading@(season.Key)">
+                                                <button class="accordion-button @(season.Key == 1 ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(season.Key)" aria-expanded="@(season.Key == 1 ? "true" : "false")" aria-controls="collapse@(season.Key)">
+                                                    Sezonul @season.Key
+                                                </button>
+                                            </h2>
+                                            <div id="collapse@(season.Key)" class="accordion-collapse collapse @(season.Key == 1 ? "show" : "")" aria-labelledby="heading@(season.Key)" data-bs-parent="#seasonsAccordion">
+                                                <div class="accordion-body">
+                                                    <div class="list-group">
+                                                        @foreach (var episod in season.Value)
+                                                        {
+                                                            <a asp-controller="Vizionare" asp-action="Episod" asp-route-serialId="@Model.Serial.Serial_ID" asp-route-episodId="@episod.Episod_ID" class="list-group-item list-group-item-action">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h5 class="mb-1">@episod.Numar_Episod. @episod.Titlu</h5>
+                                                                    <small>@episod.Durata min</small>
+                                                                </div>
+                                                                <p class="mb-1">@episod.Descriere</p>
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p class="text-center">Nu există episoade disponibile.</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Pentru JavaScript specific paginii
+</script>
