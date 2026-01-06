@@ -1,0 +1,164 @@
+@model Proiect_Netficks.ViewModels.SearchViewModel
+@{
+    ViewData["Title"] = "Caută";
+}
+
+<div class="container search-container">
+    <h2>Caută un Film sau Serial</h2>
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form asp-action="Search" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Titlu</label>
+            <input asp-for="Title" class="form-control" placeholder="Introdu titlul">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Year" class="form-label">An lansare</label>
+            <input asp-for="Year" class="form-control" type="number" min="1900" max="2100" placeholder="Introdu anul">
+        </div>
+        <div class="mb-3">
+            <label asp-for="GenreId" class="form-label">Gen</label>
+            <select asp-for="GenreId" asp-items="Model.Genres" class="form-select">
+                <option value="">Alege un gen</option>
+            </select>
+        </div>
+        <button type="submit" class="btn-gradient w-100">Caută</button>
+    </form>
+</div>
+
+@if ((Model.SearchResults != null && Model.SearchResults.Any()) || (Model.SerialResults != null && Model.SerialResults.Any()))
+{
+    <div class="container mt-4" id="searchResults">
+        <!-- Filmele găsite -->
+        @if (Model.SearchResults != null && Model.SearchResults.Any())
+        {
+            <h3>Filme</h3>
+            <div class="row">
+                @foreach (var result in Model.SearchResults)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card bg-dark text-white">
+                            <img src="@(string.IsNullOrEmpty(result.Film.ImagineUrl) ? "/images/movie-placeholder-1.jpg" : result.Film.ImagineUrl)" class="card-img-top" alt="@result.Film.Titlu">
+                            <div class="card-body">
+                                <h5 class="card-title">@result.Film.Titlu</h5>
+                                <p class="card-text">Gen: @result.Film.Gen?.Nume_Gen</p>
+                                <p class="card-text">An: @result.Film.An_Lansare</p>
+                                <p class="card-text">Durată: @result.Film.Durata minute</p>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="@Url.Action("Film", "Vizionare", new { id = result.Film.Film_ID })" class="btn btn-play">Play</a>
+                                    @if (!result.IsInWatchlist)
+                                    {
+                                        <form asp-action="AddToWatchlist" asp-controller="Search" method="post">
+                                            <input type="hidden" name="filmId" value="@result.Film.Film_ID" />
+                                            <button type="submit" class="btn-gradient">Adaugă în lista mea</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn-gradient" disabled>Adăugat în listă</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        
+        <!-- Serialele găsite -->
+        @if (Model.SerialResults != null && Model.SerialResults.Any())
+        {
+            <h3 class="mt-4">Seriale</h3>
+            <div class="row">
+                @foreach (var result in Model.SerialResults)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card bg-dark text-white">
+                            <img src="@(string.IsNullOrEmpty(result.Serial.ImagineUrl) ? "/images/movie-placeholder-1.jpg" : result.Serial.ImagineUrl)" class="card-img-top" alt="@result.Serial.Titlu">
+                            <div class="card-body">
+                                <h5 class="card-title">@result.Serial.Titlu</h5>
+                                <p class="card-text">Gen: @result.Serial.Gen?.Nume_Gen</p>
+                                <p class="card-text">An: @result.Serial.An_Aparitie</p>
+                                <p class="card-text">Sezoane: @result.Serial.Numar_Sezoane</p>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a href="@Url.Action("Serial", "Vizionare", new { id = result.Serial.Serial_ID })" class="btn btn-play">Play</a>
+                                    @if (!result.IsInWatchlist)
+                                    {
+                                        <form asp-action="AddSerialToWatchlist" asp-controller="Search" method="post">
+                                            <input type="hidden" name="serialId" value="@result.Serial.Serial_ID" />
+                                            <button type="submit" class="btn-gradient">Adaugă în lista mea</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn-gradient" disabled>Adăugat în listă</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+else if ((!string.IsNullOrEmpty(Model.Title) || Model.Year.HasValue || Model.GenreId.HasValue))
+{
+    <div class="container mt-4">
+        <div class="alert alert-info">
+            Nu s-au găsit rezultate pentru căutarea dvs.
+        </div>
+    </div>
+}
+
+<style>
+    .search-container { max-width: 800px; margin: auto; padding-top: 20px; }
+    
+    .btn-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 5px;
+        width: 100%;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-play {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 5px;
+        width: 48%;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-play:hover {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+</style>
+
+<script>
+    function playMovie(filmId) {
+        // Redirect to a page to play the movie
+        window.location.href = '/Filme/Play?id=' + filmId;
+    }
+</script>

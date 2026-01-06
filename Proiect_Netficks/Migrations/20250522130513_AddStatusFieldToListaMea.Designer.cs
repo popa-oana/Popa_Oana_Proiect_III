@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_Netficks.Data;
 
@@ -11,9 +12,11 @@ using Proiect_Netficks.Data;
 namespace Proiect_Netficks.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250522130513_AddStatusFieldToListaMea")]
+    partial class AddStatusFieldToListaMea
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -685,7 +688,7 @@ namespace Proiect_Netficks.Migrations
                         .WithMany("IstoricVizionari")
                         .HasForeignKey("Film_ID");
 
-                    b.HasOne("Proiect_Netficks.Models.Serial", "Serial")
+                    b.HasOne("Proiect_Netficks.Models.Serial", null)
                         .WithMany("IstoricVizionari")
                         .HasForeignKey("Serial_ID");
 
@@ -702,8 +705,6 @@ namespace Proiect_Netficks.Migrations
                     b.Navigation("Episod");
 
                     b.Navigation("Film");
-
-                    b.Navigation("Serial");
 
                     b.Navigation("Utilizator");
                 });
@@ -745,7 +746,7 @@ namespace Proiect_Netficks.Migrations
                         .WithMany("Recenzii")
                         .HasForeignKey("Film_ID");
 
-                    b.HasOne("Proiect_Netficks.Models.Serial", "Serial")
+                    b.HasOne("Proiect_Netficks.Models.Serial", null)
                         .WithMany("Recenzii")
                         .HasForeignKey("Serial_ID");
 
@@ -762,8 +763,6 @@ namespace Proiect_Netficks.Migrations
                     b.Navigation("Episod");
 
                     b.Navigation("Film");
-
-                    b.Navigation("Serial");
 
                     b.Navigation("Utilizator");
                 });

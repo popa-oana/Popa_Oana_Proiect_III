@@ -1,0 +1,144 @@
+@model Proiect_Netficks.ViewModels.SetariViewModel
+@{
+    ViewData["Title"] = "Setări cont";
+}
+
+<div class="container mt-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group mb-4">
+                <a href="#detalii-personale" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                    <i class="bi bi-person-fill me-2"></i>Detalii personale
+                </a>
+                <a href="#setari-cont" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                    <i class="bi bi-gear-fill me-2"></i>Setări cont
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="tab-content">
+                <!-- Detalii personale -->
+                <div class="tab-pane fade show active" id="detalii-personale">
+                    <div class="card">
+                        <div class="card-header bg-gradient">
+                            <h3 class="mb-0 text-white">Detalii personale</h3>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="ActualizeazaDetalii" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                
+                                <div class="alert alert-info mb-3">
+                                    <i class="bi bi-info-circle"></i> Aici îți poți actualiza detaliile contului tău.
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="DetaliiPersonale.Nume" class="form-label">Nume complet</label>
+                                    <input asp-for="DetaliiPersonale.Nume" class="form-control" placeholder="Nume și prenume" />
+                                    <span asp-validation-for="DetaliiPersonale.Nume" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="DetaliiPersonale.Username" class="form-label">Nume utilizator</label>
+                                    <input asp-for="DetaliiPersonale.Username" class="form-control" placeholder="Numele tău de utilizator" />
+                                    <span asp-validation-for="DetaliiPersonale.Username" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="DetaliiPersonale.Email" class="form-label">Adresă de email</label>
+                                    <input asp-for="DetaliiPersonale.Email" class="form-control" placeholder="email@exemplu.com" />
+                                    <span asp-validation-for="DetaliiPersonale.Email" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="DetaliiPersonale.Telefon" class="form-label">Număr de telefon</label>
+                                    <input asp-for="DetaliiPersonale.Telefon" class="form-control" placeholder="07xxxxxxxx" />
+                                    <span asp-validation-for="DetaliiPersonale.Telefon" class="text-danger"></span>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-gradient btn-lg w-100">Salvează detaliile</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Setări cont -->
+                <div class="tab-pane fade" id="setari-cont">
+                    <div class="card mb-4">
+                        <div class="card-header bg-gradient">
+                            <h3 class="mb-0 text-white">Schimbă parola</h3>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="SchimbaParola" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="SchimbaParola.ParolaVeche" class="form-label"></label>
+                                    <input asp-for="SchimbaParola.ParolaVeche" class="form-control" />
+                                    <span asp-validation-for="SchimbaParola.ParolaVeche" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="SchimbaParola.ParolaNoua" class="form-label"></label>
+                                    <input asp-for="SchimbaParola.ParolaNoua" class="form-control" />
+                                    <span asp-validation-for="SchimbaParola.ParolaNoua" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label asp-for="SchimbaParola.ConfirmaParolaNoua" class="form-label"></label>
+                                    <input asp-for="SchimbaParola.ConfirmaParolaNoua" class="form-control" />
+                                    <span asp-validation-for="SchimbaParola.ConfirmaParolaNoua" class="text-danger"></span>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-gradient">Schimbă parola</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+    }
+    
+    .btn-gradient {
+        background: linear-gradient(90deg, #d32f2f, #1976d2);
+        border: none;
+        color: white;
+        font-weight: bold;
+        padding: 12px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #1976d2, #d32f2f);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

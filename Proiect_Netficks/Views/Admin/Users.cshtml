@@ -60,11 +60,15 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <button type="button" class="btn btn-outline-primary">
-                                            <i class="bi bi-pencil"></i>
+                                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editSubscriptionModal" 
+                                                data-user-id="@user.Id" data-user-name="@user.Nume" data-current-plan="@user.Tip_Abonament"
+                                                @(await UserManager.IsInRoleAsync(user, "Admin") ? "disabled" : "")>
+                                            <i class="bi bi-pencil"></i> Abonament
                                         </button>
-                                        <button type="button" class="btn btn-outline-danger">
-                                            <i class="bi bi-trash"></i>
+                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal" 
+                                                data-user-id="@user.Id" data-user-name="@user.Nume"
+                                                @(await UserManager.IsInRoleAsync(user, "Admin") ? "disabled" : "")>
+                                            <i class="bi bi-trash"></i> Șterge
                                         </button>
                                     </div>
                                 </td>
@@ -76,3 +80,104 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Subscription Modal -->
+<div class="modal fade" id="editSubscriptionModal" tabindex="-1" aria-labelledby="editSubscriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="editSubscriptionModalLabel">Modificare Abonament</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="UpdateUserSubscription" asp-controller="Admin" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <input type="hidden" name="userId" id="editUserId" />
+                    <p>Modifici abonamentul pentru utilizatorul <strong id="editUserName"></strong>.</p>
+                    <p>Abonament curent: <span class="badge bg-secondary" id="currentSubscriptionBadge"></span></p>
+                    
+                    <div class="form-group mb-3">
+                        <label for="subscriptionType" class="form-label">Tip abonament nou:</label>
+                        <select name="subscriptionType" id="subscriptionType" class="form-select bg-dark text-white">
+                            <option value="Basic">Basic</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i> Schimbarea abonamentului va actualiza automat rolurile și accesul utilizatorului.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                    <button type="submit" class="btn btn-primary">Salvează modificările</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete User Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="deleteUserModalLabel">Confirmare ștergere cont</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="DeleteUser" asp-controller="Admin" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <input type="hidden" name="userId" id="deleteUserId" />
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i> <strong>Atenție!</strong> Ești pe cale să ștergi contul utilizatorului <strong id="deleteUserName"></strong>.
+                    </div>
+                    <p>Această acțiune este <strong>ireversibilă</strong> și va șterge toate datele asociate acestui utilizator, inclusiv:</p>
+                    <ul>
+                        <li>Informațiile personale</li>
+                        <li>Istoricul de vizionări</li>
+                        <li>Lista de favorite</li>
+                        <li>Recenziile</li>
+                        <li>Abonamentele</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anulează</button>
+                    <button type="submit" class="btn btn-danger">Șterge definitiv</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Handle edit subscription modal
+            $('#editSubscriptionModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var userId = button.data('user-id');
+                var userName = button.data('user-name');
+                var currentPlan = button.data('current-plan');
+                
+                var modal = $(this);
+                modal.find('#editUserId').val(userId);
+                modal.find('#editUserName').text(userName);
+                modal.find('#currentSubscriptionBadge').text(currentPlan);
+                modal.find('#subscriptionType').val(currentPlan);
+            });
+            
+            // Handle delete user modal
+            $('#deleteUserModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var userId = button.data('user-id');
+                var userName = button.data('user-name');
+                
+                var modal = $(this);
+                modal.find('#deleteUserId').val(userId);
+                modal.find('#deleteUserName').text(userName);
+            });
+        });
+    </script>
+}

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Proiect_Netficks.Models;
-using Proiect_Netficks.Services;
+using Proiect_Netficks.Services.Interfaces;
 using Proiect_Netficks.ViewModels;
 using System;
 using System.IO;
@@ -16,12 +16,14 @@ namespace Proiect_Netficks.Controllers
         private readonly IAuthService _authService;
         private readonly UserManager<User> _userManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IProfileService _profileService;
 
-        public AccountController(IAuthService authService, UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
+        public AccountController(IAuthService authService, UserManager<User> userManager, IWebHostEnvironment webHostEnvironment, IProfileService profileService)
         {
             _authService = authService;
             _userManager = userManager;
             _webHostEnvironment = webHostEnvironment;
+            _profileService = profileService;
         }
 
         [HttpGet]
@@ -119,16 +121,118 @@ namespace Proiect_Netficks.Controllers
                 return NotFound();
             }
 
-            var viewModel = new ProfileViewModel
+            var viewModel = await _profileService.GetProfileViewModelAsync(user.Id);
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> EditProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new EditProfileViewModel
             {
                 Nume = user.Nume,
                 Email = user.Email ?? string.Empty,
-                TipAbonament = user.Tip_Abonament,
-                DataInregistrare = user.Data_Inregistrare.ToString("dd MMMM yyyy"),
-                CurrentProfileImagePath = user.ProfileImagePath
+                Telefon = user.PhoneNumber
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _profileService.UpdateUserProfileAsync(user.Id, model);
+            if (result)
+            {
+                TempData["SuccessMessage"] = "Profilul a fost actualizat cu succes.";
+                return RedirectToAction(nameof(Profile));
+            }
+
+            ModelState.AddModelError(string.Empty, "A apărut o eroare la actualizarea profilului.");
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View(new ChangePasswordViewModel());
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _profileService.ChangePasswordAsync(user.Id, model);
+            if (result)
+            {
+                TempData["SuccessMessage"] = "Parola a fost schimbată cu succes.";
+                return RedirectToAction(nameof(Profile));
+            }
+
+            ModelState.AddModelError(string.Empty, "Parola curentă este incorectă sau noua parolă nu respectă cerințele de securitate.");
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult DeleteAccount()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteAccount")]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteAccountConfirmed()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _profileService.DeleteAccountAsync(user.Id);
+            if (result)
+            {
+                await _authService.LogoutAsync();
+                return RedirectToAction("Index", "Home");
+            }
+
+            TempData["ErrorMessage"] = "A apărut o eroare la ștergerea contului.";
+            return RedirectToAction(nameof(Profile));
         }
 
         [HttpPost]
